@@ -120,7 +120,6 @@ app.post("/ca-data", async (req: Request, res: Response) => {
         !row[22]
       ) {
         // Row is empty, insert data directly
-        // row index
         console.log("empty", rowIndex);
         row[12] = quantityPurchased;
         row[13] = dateSold;
@@ -147,12 +146,8 @@ app.post("/ca-data", async (req: Request, res: Response) => {
           sheetData[rowIndex][21] = orderID;
           sheetData[rowIndex][22] = orderItemID;
         } else {
-          // when orderItemID is not matched clean the fields (index 12, 13, 15 16, 21, 22)
-          // and insert the data
-          console.log(
-            rowIndex,
-            "Same order Item ID matches found / overwriting data"
-          );
+          // When orderItemID matches, update the data in the same row
+          console.log(rowIndex, "Same order Item ID matches found / overwriting data");
           row[12] = quantityPurchased;
           row[13] = dateSold;
           row[15] = salePrice;
@@ -163,10 +158,10 @@ app.post("/ca-data", async (req: Request, res: Response) => {
       }
     }
 
-    // OSTU
-    const aToN = sheetData.map((array) => array.slice(0, 13));
-    const pToR = sheetData.map((array) => array.slice(15, 17));
-    const vToW = sheetData.map((array) => array.slice(20, 21));
+    // Split the data for different ranges
+    const aToN = sheetData.map((array) => array.slice(0, 14)); // Adjusted to capture correct columns
+    const pToR = sheetData.map((array) => array.slice(15, 18)); // Adjusted to capture correct columns
+    const vToW = sheetData.map((array) => array.slice(21, 23)); // Adjusted to capture correct columns
 
     await updateSheetData("Canada!A:N", aToN);
     await updateSheetData("Canada!P:R", pToR);
