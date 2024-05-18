@@ -2,10 +2,11 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./api",  // Root directory changed to ./api
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "outDir": "./dist"
-  },
-  "include": ["src/**/*"]
+    "forceConsistentCasingInFileNames": true
+  }
 }
