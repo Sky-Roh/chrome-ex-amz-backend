@@ -21,8 +21,11 @@ const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 
 // Google Sheet connection
 
+const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS as string);
+
+// Initialize GoogleAuth with the credentials from the environment variable
 const auth = new GoogleAuth({
-  keyFile: path.join(__dirname, "..", "credentials.json"),
+  credentials,
   scopes: SCOPES,
 });
 
