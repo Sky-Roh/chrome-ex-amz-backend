@@ -19,11 +19,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID as string;
 
+if (!process.env.GOOGLE_CREDENTIALS_BASE64) {
+  throw new Error("GOOGLE_CREDENTIALS_BASE64 environment variable is not set.");
+}
+const credentials = JSON.parse(Buffer.from(process.env.GOOGLE_CREDENTIALS_BASE64, 'base64').toString('utf-8'));
+
 // Google Sheet connection
 
-const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS as string);
-
-// Initialize GoogleAuth with the credentials from the environment variable
 const auth = new GoogleAuth({
   credentials,
   scopes: SCOPES,
