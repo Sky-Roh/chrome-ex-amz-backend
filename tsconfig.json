@@ -3,10 +3,11 @@
     "target": "ES6",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./api",  // Root directory changed to ./api
+    "rootDir": "./api",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["api/**/*.ts"]
 }
