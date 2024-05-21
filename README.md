@@ -29,8 +29,9 @@ This backend exports data from a flat text file to Google Sheets and populates t
     - Copy and paste the encoded JSON content into your .env file.
 
 5. **Get Spreadsheet ID**:
-    - Navigate to your Google Sheets document: https://docs.google.com/spreadsheets/d/<spreadsheetID>/edit#gid=0.
-    - Copy the <spreadsheetID>.
+    - Navigate to your Google Sheets document:
+      ```https://docs.google.com/spreadsheets/d/<spreadsheetID>/edit#gid=0```
+    - Copy the spreadsheetID.
 
 5. **Update .env File**:
     - Add the Spreadsheet ID to your .env file.
