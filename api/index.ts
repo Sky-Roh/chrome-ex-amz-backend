@@ -2,7 +2,6 @@
 import express, { Request, Response } from "express";
 import { google, sheets_v4 } from "googleapis";
 import bodyParser from "body-parser";
-import path from "path";
 import dotenv from "dotenv";
 import cors from "cors";
 import { GoogleAuth, OAuth2Client, JWT } from "google-auth-library";
